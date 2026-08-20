@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tailwindcss";
+
+@theme {
+  /* Colors - Light Theme */
+  --color-light-bg: #FFFFFF;
+  --color-light-surface: #FAFAFA;
+  --color-light-border: #E5E7EB;
+  --color-light-text-primary: #111827;
+  --color-light-text-secondary: #6B7280;
+
+  /* Colors - Dark Theme */
+  --color-dark-bg: #09090B;
+  --color-dark-surface: #111113;
+  --color-dark-border: #27272A;
+  --color-dark-text-primary: #FAFAFA;
+  --color-dark-text-secondary: #A1A1AA;
+
+  /* Colors - Shared */
+  --color-accent: #5E6AD2;
+  --color-accent-dark: #7C8BFF;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  /* Typography */
+  --font-primary: "Geist Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: "Geist Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --text-hero: 56px;
+  --text-hero--line-height: 1.1;
+  --text-hero--font-weight: 700;
+
+  --text-h1: 40px;
+  --text-h1--line-height: 1.2;
+  --text-h1--font-weight: 700;
+
+  --text-h2: 32px;
+  --text-h2--line-height: 1.25;
+  --text-h2--font-weight: 600;
+
+  --text-h3: 24px;
+  --text-h3--line-height: 1.3;
+  --text-h3--font-weight: 600;
+
+  --text-body: 16px;
+  --text-body--line-height: 1.6;
+  --text-body--font-weight: 400;
+
+  --text-small: 14px;
+  --text-small--line-height: 1.5;
+  --text-small--font-weight: 400;
+
+  --text-code: 14px;
+  --text-code--line-height: 1.5;
+  --text-code--font-weight: 400;
+
+  /* Spacing */
+  --spacing-section-padding: 96px;
+  --spacing-section-gap: 64px;
+  --spacing-component-gap: 32px;
+  --spacing-content-gap: 24px;
+  --spacing-element-gap: 16px;
+
+  /* Border Radius */
+  --radius-button: 10px;
+  --radius-card: 12px;
+  --radius-input: 10px;
+  --radius-badge: 9999px;
+
+  /* Shadows */
+  --shadow-small: 0 1px 2px rgba(0, 0, 0, .05);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, .08);
+
+  /* Animation */
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  --animate-duration-fast: 150ms;
+  --animate-duration-default: 200ms;
+  --animate-duration-slow: 300ms;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer utilities {
+  .container-default {
+    max-width: 1200px;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .container-content {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .container-wide {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section-padding {
+    padding-top: var(--spacing-section-padding);
+    padding-bottom: var(--spacing-section-padding);
+  }
+
+  .section-gap {
+    gap: var(--spacing-section-gap);
+  }
+
+  .component-gap {
+    gap: var(--spacing-component-gap);
+  }
+
+  .content-gap {
+    gap: var(--spacing-content-gap);
+  }
+
+  .element-gap {
+    gap: var(--spacing-element-gap);
+  }
+
+  .transition-fast {
+    transition-duration: var(--animate-duration-fast);
+    transition-timing-function: var(--default-transition-timing-function);
+  }
+
+  .transition-default {
+    transition-duration: var(--animate-duration-default);
+    transition-timing-function: var(--default-transition-timing-function);
+  }
+
+  .transition-slow {
+    transition-duration: var(--animate-duration-slow);
+    transition-timing-function: var(--default-transition-timing-function);
+  }
+}
