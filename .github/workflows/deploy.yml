@@ -20,19 +20,19 @@ jobs:
           npm ci
           npm run build
 
-      - name: Copy dist to /_work/shenkz/portfolio folder and Deploy
+      - name: Copy dist to /_work/portfolio folder and Deploy
         run: |
-          mkdir -p /_work/shenkz/portfolio/dist
+          mkdir -p /_work/portfolio/dist
 
-          echo "Copying dist to /_work/shenkz/portfolio"
-          rm -rf /_work/shenkz/portfolio/dist
-          cp -r ./dist /_work/shenkz/portfolio/dist
+          echo "Copying dist to /_work/portfolio"
+          rm -rf /_work/portfolio/dist
+          cp -r ./dist /_work/portfolio/dist
 
           echo "Copying docker files"
-          cp docker-compose.yml nginx.conf /_work/shenkz/portfolio/
+          cp docker-compose.yml nginx.conf /_work/portfolio/
 
           echo "Restarting Containers"
-          cd /_work/shenkz/portfolio
+          cd /_work/portfolio
           docker compose up -d --build --no-deps portfolio
           docker compose ps
         
