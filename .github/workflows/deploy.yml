@@ -1,9 +1,7 @@
 name: deploy
-
 on:
   push:
     branches: [main]
-
 jobs:
   deploy:
     runs-on: self-hosted
@@ -14,20 +12,12 @@ jobs:
       - name: Build Frontend in Docker
         run: |
           echo "Building with Node 20 in Docker"
-          echo "Workspace: $GITHUB_WORKSPACE"
-          ls -la $GITHUB_WORKSPACE
-          docker run --rm -v "$GITHUB_WORKSPACE":/app -w /app node:20-alpine sh -c "ls -la &&npm install && npm run build"
+          docker run --rm -v /home/shenkz/portfolio:/app -w /app node:20-alpine sh -c "ls -la &&npm install && npm run build"
 
       - name: Copy dist to portfolio folder and Deploy
         run: |
-          echo "Copying dist to /home/shenkz/portfolio"
-          rsync -a --delete $GITHUB_WORKSPACE/dist/ /home/shenkz/portfolio/dist/
-
-          echo "Copying docker files"
-          cp $GITHUB_WORKSPACE/docker-compose.yml $GITHUB_WORKSPACE/nginx.conf /home/shenkz/portfolio/
-
+          echo "Copying dist"
+          rsync -a --delete /home/shenkz/portfolio/dist/ /home/shenkz/portfolio/dist/
           echo "Restarting Containers"
           cd /home/shenkz/portfolio
           docker compose up -d --build --no-deps portfolio
-          docker compose ps
-          echo "Deployment finished successfully!"
