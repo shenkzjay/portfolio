@@ -4,26 +4,25 @@ on:
   push:
     branches: [main]
 jobs:
-  deploy-staging:
+  deploy:
     if: github.ref == 'refs/heads/main'
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      
-      - name: Build
-        run: |
-          npm ci
-          npm run build
+     - name: checkout
+       uses: actions/checkout@v4
+       with:
+         path: /home/shenkz/porfolio
 
-      - name: Deploy to Staging server
-        run: |
-          echo "Deploying to local staging...."
-          rm -rf ~/portfolio/dist/*
-          cp -r dist/* ~/portfolio/dist/
-          cd ~/moodle-infra/multitenant && docker compose restart portfolio
-          
+     - name: Build and Restart porfolio
+       working-directory: /home/shenkz/porfolio
+       run: |
+         echo "Pulling latest code"
+         git pull
+         echo "Building docker image"
+         docker compose -f docker-compose.yml build --no-cache
+         echo "Restarting Containers"
+         docker compose -f docker-compose.yml up -d
+         docker compose ps
+         echo "Deployment finished successfully!"
+         
         
