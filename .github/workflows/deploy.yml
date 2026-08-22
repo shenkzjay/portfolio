@@ -5,23 +5,28 @@ on:
     branches: [main]
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/main'
     runs-on: self-hosted
     steps:
-     - name: checkout
+     - name: checkout code
        uses: actions/checkout@v4
-       with:
-         path: /home/shenkz/porfolio
 
-     - name: Build and Restart porfolio
-       working-directory: /home/shenkz/porfolio
+     - name: Build Frontend
        run: |
-         echo "Pulling latest code"
-         git pull
-         echo "Building docker image"
-         docker compose -f docker-compose.yml build --no-cache
+         npm ci
+         npm run build
+
+     - name: Copy to portfolio folder and Deploy
+       run: |
+         echo "Copying dist to /home/shenkz/portfolio"
+         rsync -a --delete ./dist/ /home/shenkz/portfolio/dist/
+
+         echo "Copying docker files"
+         cp docker-compose.yml nginx.conf /home/shenkz/portfolio/
+
          echo "Restarting Containers"
-         docker compose -f docker-compose.yml up -d
+         cd /home/shenkz/portfolio
+         docker compose up -d --build --no-deps portfolio
+
          docker compose ps
          echo "Deployment finished successfully!"
          
