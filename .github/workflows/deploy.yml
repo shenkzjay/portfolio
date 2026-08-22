@@ -14,7 +14,7 @@ jobs:
       - name: Build Frontend in Docker
         run: |
           echo "Building with Node 20 in Docker"
-          docker run --rm -v $(pwd):/app -w /app node:20-alpine sh -c "npm ci && npm run build"
+          docker run --rm -v $(pwd):/app -w /app node:20-alpine sh -c "ls -la && pwd && npm ci && npm run build"
 
       - name: Copy dist to portfolio folder and Deploy
         run: |
