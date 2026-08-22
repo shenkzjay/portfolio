@@ -1,0 +1,19 @@
+name: Test
+on:
+   push:
+     branches: [staging]
+jobs:
+    test:
+      runs-on: self-hosted
+      steps:
+        - name: checkout
+          uses: actions/checkout@v4
+        
+        - name: Show Runner info
+          run: |
+            echo "Hello World"
+            hostname
+            docker --version
+            df -h 
+            free -m
+        
