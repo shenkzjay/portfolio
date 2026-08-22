@@ -23,7 +23,8 @@ jobs:
       - name: Copy dist to portfolio folder and Deploy
         run: |
           echo "Copying dist to /home/shenkz/portfolio"
-          rsync -a --delete./dist/ /home/shenkz/portfolio/dist/
+          rm -rf /home/shenkz/portfolio/dist
+          cp -r ./dist /home/shenkz/portfolio/dist
 
           echo "Copying docker files"
           cp docker-compose.yml nginx.conf /home/shenkz/portfolio/
@@ -32,3 +33,5 @@ jobs:
           cd /home/shenkz/portfolio
           docker compose up -d --build --no-deps portfolio
           docker compose ps
+
+          
