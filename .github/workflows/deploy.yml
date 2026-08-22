@@ -14,16 +14,18 @@ jobs:
       - name: Build Frontend in Docker
         run: |
           echo "Building with Node 20 in Docker"
-          docker run --rm -v "$GITHUB_WORKSPACE":/app -w /app node:20-alpine sh -c "npm ci && npm run build"
+          echo "Workspace: $GITHUB_WORKSPACE"
+          ls -la $GITHUB_WORKSPACE
+          docker run --rm -v "$GITHUB_WORKSPACE":/app -w /app node:20-alpine sh -c "ls -la &&npm install && npm run build"
 
       - name: Copy dist to portfolio folder and Deploy
         run: |
           echo "Copying dist to /home/shenkz/portfolio"
-          rsync -a --delete./dist/ /home/shenkz/portfolio/dist/
-          
+          rsync -a --delete $GITHUB_WORKSPACE/dist/ /home/shenkz/portfolio/dist/
+
           echo "Copying docker files"
-          cp docker-compose.yml nginx.conf /home/shenkz/portfolio/
-          
+          cp $GITHUB_WORKSPACE/docker-compose.yml $GITHUB_WORKSPACE/nginx.conf /home/shenkz/portfolio/
+
           echo "Restarting Containers"
           cd /home/shenkz/portfolio
           docker compose up -d --build --no-deps portfolio
