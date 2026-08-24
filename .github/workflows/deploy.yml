@@ -33,7 +33,7 @@ jobs:
 
           echo "Restarting Containers"
           cd /_work/portfolio
-          sudo docker-compose up -d --build --no-deps portfolio
-          sudo docker-compose ps
+          sudo /usr/bin/docker compose up -d --build --no-deps portfolio
+          sudo /usr/bin/docker compose ps
         
 
