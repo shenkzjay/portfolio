@@ -23,12 +23,12 @@ jobs:
           set -e # stop on first error
           
           echo "1. Copying dist"
-          rm -rf /opt/portfolio/dist
-          mkdir -p /opt/portfolio/dist
-          cp -r./dist/* /opt/portfolio/dist/
+          sudo rm -rf /opt/portfolio/dist
+          sudo mkdir -p /opt/portfolio/dist
+          sudo cp -r ./dist/* /opt/portfolio/dist/
 
           echo "2. Copying docker files"
-          cp docker-compose.yml nginx.conf /opt/portfolio/
+          sudo cp docker-compose.yml nginx.conf /opt/portfolio/
 
           echo "3. Restarting Containers"
           cd /opt/portfolio
