@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 export default function N8nAutomations() {
   return (
     <div className="py-12 animate-fade-in">
-      <Link to="/" className="text-small text-accent hover:underline mb-8 inline-block">
-        &larr; Back to Home
+      <Link to="/" className="group text-small text-accent transition-default mb-8 inline-block">
+        <span className="relative">
+          &larr; Back to Home
+          <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-accent transition-all transition-default group-hover:w-full"></span>
+        </span>
       </Link>
 
       <h1 className="text-h3 text-light-text-primary dark:text-dark-text-primary mb-2">

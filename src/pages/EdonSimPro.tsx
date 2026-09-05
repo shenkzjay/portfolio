@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import smartBoard from "../assets/images/smart.jpeg";
 import smartBoard2 from "../assets/images/smart-board1.jpeg"
-import annotationVideo from "../assets/vids/smart.mp4"
+import annotationVideo from "../assets/vids/3dvid.mp4"
 import edonArchitecture from "../assets/images/architecture.png"
 
 export default function EdonSimPro() {
   return (
     <div className="py-12 animate-fade-in">
-      <Link to="/" className="text-small text-accent hover:underline mb-8 inline-block">
-        &larr; Back to Home
+      <Link to="/" className="group text-small text-accent transition-default mb-8 inline-block">
+        <span className="relative">
+          &larr; Back to Home
+          <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-accent transition-all transition-default group-hover:w-full"></span>
+        </span>
       </Link>
 
       <h1 className="text-h3 text-light-text-primary dark:text-dark-text-primary mb-2">
@@ -266,52 +269,54 @@ export default function EdonSimPro() {
           <h3 className="text-h3 text-light-text-primary dark:text-dark-text-primary">Engineering Decisions</h3>
           <p className="text-body text-light-text-secondary dark:text-dark-text-secondary">The following decisions were made during the development of the application:</p>
         </div>
-        <table className="border border-light-border dark:border-dark-border w-full border-collapse border-l-0 border-r-0">
-          <thead>
-            <tr className="border-b border-light-border dark:border-dark-border">
-              <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Decision</th>
-              <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Why we chose it</th>
-              <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Trade-off</th>
-            </tr>
-          </thead>
-          <tbody className="">
-            <tr className="border-b border-light-border dark:border-dark-border">
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Sketchfab Viewer Api</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Deliver interactive 3D experiences quickly using existing educational assets</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Less rendering flexibility than building every experience from scratch</p>
-              </td>
-            </tr>
+        <div className="w-full overflow-x-auto">
+          <table className="min-w-[550px] sm:min-w-full border border-light-border dark:border-dark-border w-full border-collapse border-l-0 border-r-0">
+            <thead>
+              <tr className="border-b border-light-border dark:border-dark-border">
+                <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Decision</th>
+                <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Why we chose it</th>
+                <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Trade-off</th>
+              </tr>
+            </thead>
+            <tbody className="">
+              <tr className="border-b border-light-border dark:border-dark-border">
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Sketchfab Viewer Api</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Deliver interactive 3D experiences quickly using existing educational assets</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Less rendering flexibility than building every experience from scratch</p>
+                </td>
+              </tr>
 
-            <tr className="border-b border-light-border dark:border-dark-border">
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Centralized VPS Deployment</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Simplified maintenance and reduced infrastructure costs</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Larger deployment blast radius requiring careful staging and rollback planning</p>
-              </td>
-            </tr>
+              <tr className="border-b border-light-border dark:border-dark-border">
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Centralized VPS Deployment</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Simplified maintenance and reduced infrastructure costs</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Larger deployment blast radius requiring careful staging and rollback planning</p>
+                </td>
+              </tr>
 
-            <tr className="border-b border-light-border dark:border-dark-border">
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Shared Learning Assets</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Easier content updates across every institution</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Required tenant-aware routing to prevent cross-school navigation</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              <tr className="border-b border-light-border dark:border-dark-border">
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Shared Learning Assets</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Easier content updates across every institution</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Required tenant-aware routing to prevent cross-school navigation</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
 

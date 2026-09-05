@@ -5,8 +5,11 @@ import infra2 from "../assets/images/infra2.png"
 export default function InfrastructureMigration() {
   return (
     <div className="py-12 animate-fade-in">
-      <Link to="/" className="text-small text-accent hover:underline mb-8 inline-block">
-        &larr; Back to Home
+      <Link to="/" className="group text-small text-accent transition-default mb-8 inline-block">
+        <span className="relative">
+          &larr; Back to Home
+          <span className="absolute left-0 -bottom-0.5 w-0 h-[1px] bg-accent transition-all transition-default group-hover:w-full"></span>
+        </span>
       </Link>
 
       <h1 className="text-h3 text-light-text-primary dark:text-dark-text-primary mb-2">
@@ -108,63 +111,65 @@ export default function InfrastructureMigration() {
           <h3 className="text-h3 text-light-text-primary dark:text-dark-text-primary">Engineering Decisions</h3>
           <p className="text-body text-light-text-secondary dark:text-dark-text-secondary">The following decisions were made during the development of the application:</p>
         </div>
-        <table className="border border-light-border dark:border-dark-border w-full border-collapse border-l-0 border-r-0">
-          <thead>
-            <tr className="border-b border-light-border dark:border-dark-border">
-              <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Decision</th>
-              <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Why we chose it</th>
-              <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Trade-off</th>
-            </tr>
-          </thead>
-          <tbody className="">
-            <tr className="border-b border-light-border dark:border-dark-border">
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Centralized VPS</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Reduce infrastructure cost and simplify maintenance</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Increased blast radius; an infrastructure failure could affect multiple schools</p>
-              </td>
-            </tr>
+        <div className="w-full overflow-x-auto">
+          <table className="min-w-[550px] sm:min-w-full border border-light-border dark:border-dark-border w-full border-collapse border-l-0 border-r-0">
+            <thead>
+              <tr className="border-b border-light-border dark:border-dark-border">
+                <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Decision</th>
+                <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Why we chose it</th>
+                <th className="text-left p-4 border-b border-light-border dark:border-dark-border">Trade-off</th>
+              </tr>
+            </thead>
+            <tbody className="">
+              <tr className="border-b border-light-border dark:border-dark-border">
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Centralized VPS</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Reduce infrastructure cost and simplify maintenance</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Increased blast radius; an infrastructure failure could affect multiple schools</p>
+                </td>
+              </tr>
 
-            <tr className="border-b border-light-border dark:border-dark-border">
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Nginx reverse proxy</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Route multiple school domains through the centralized infrastructure</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Required additional routing and configuration management</p>
-              </td>
-            </tr>
+              <tr className="border-b border-light-border dark:border-dark-border">
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Nginx reverse proxy</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Route multiple school domains through the centralized infrastructure</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Required additional routing and configuration management</p>
+                </td>
+              </tr>
 
-            <tr className="border-b border-light-border dark:border-dark-border">
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Docker</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Provide consistent and repeatable application environments</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Added container management to the deployment process</p>
-              </td>
-            </tr>
-            <tr className="border-b border-light-border dark:border-dark-border">
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Centralized application maintenance</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Avoid maintaining the same platform independently across every deployment</p>
-              </td>
-              <td className="p-4 border-b border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Changes to shared components could affect multiple schools and therefore required more careful deployment</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              <tr className="border-b border-light-border dark:border-dark-border">
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Docker</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Provide consistent and repeatable application environments</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Added container management to the deployment process</p>
+                </td>
+              </tr>
+              <tr className="border-b border-light-border dark:border-dark-border">
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Centralized application maintenance</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Avoid maintaining the same platform independently across every deployment</p>
+                </td>
+                <td className="p-4 border-b border-light-border dark:border-dark-border">
+                  <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">Changes to shared components could affect multiple schools and therefore required more careful deployment</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
 
