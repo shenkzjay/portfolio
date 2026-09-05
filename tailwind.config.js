@@ -28,6 +28,7 @@ module.exports = {
         h1: ["40px", { lineHeight: "1.2", fontWeight: "700" }],
         h2: ["32px", { lineHeight: "1.25", fontWeight: "600" }],
         h3: ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+        h4: ["20px", { lineHeight: "1.4", fontWeight: "600" }],
         body: ["16px", { lineHeight: "1.6", fontWeight: "400" }],
         small: ["14px", { lineHeight: "1.5", fontWeight: "400" }],
         code: ["14px", { lineHeight: "1.5", fontWeight: "400" }],
