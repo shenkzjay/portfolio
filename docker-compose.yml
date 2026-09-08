@@ -1,5 +1,5 @@
 services:
-  porfolio:
+  portfolio:
     image: nginx:alpine
     container_name: porfolio-web
     mem_limit: 128M
@@ -9,9 +9,11 @@ services:
     volumes:
       - ./dist:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - multitenant_mt-net
 
 
 networks:
   default:
     external: true
-    name: multitenant-mt_net
+    name: multitenant_mt-net
