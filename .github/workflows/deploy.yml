@@ -25,13 +25,20 @@ jobs:
           echo "1. Copying dist"
           sudo rm -rf /opt/portfolio/dist
           sudo mkdir -p /opt/portfolio/dist
-          sudo cp -r ./dist/* /opt/portfolio/dist/
 
-          echo "2. Copying docker files"
-          sudo cp /home/shenkz/portfolio/docker-compose.yml /home/shenkz/portfolio/nginx.conf /opt/portfolio/
+          echo "2. Copying dist folder"
+          sudo cp -a ./dist/. /opt/portfolio/dist/
 
-          echo "3. Restarting Containers"
+          echo "3. Copying docker files"
+          sudo cp ./docker-compose.yml /opt/portfolio/
+          sudo cp ./nginx.conf /opt/portfolio/
+
+          echo "4. Validating Compose"
           cd /opt/portfolio
           docker compose config # this will validate service name first
-          docker compose up -d --build portfolio
+
+          echo "5. Rebuilding and restarting containers"
+          docker compose up -d --build
+
+          echo "6. Checking container status"
           docker compose ps
