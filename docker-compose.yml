@@ -1,7 +1,7 @@
 services:
   portfolio:
     image: nginx:alpine
-    container_name: porfolio-web
+    container_name: portfolio-web
     mem_limit: 128M
     restart: unless-stopped
     ports:
@@ -14,6 +14,5 @@ services:
 
 
 networks:
-  default:
+  multitenant_mt-net:
     external: true
-    name: multitenant_mt-net
