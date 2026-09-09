@@ -18,23 +18,23 @@ jobs:
           npm ci
           npm run build
           
-      - name: Deploy to /opt/portfolio
+      - name: Deploy to /home/shenkz/portfolio
         run: |
           set -e # stop on first error
           
           echo "1. Copying dist"
-          rm -rf /opt/portfolio/dist
-          mkdir -p /opt/portfolio/dist
+          rm -rf /home/shenkz/portfolio/dist
+          mkdir -p /home/shenkz/portfolio/dist
 
           echo "2. Copying dist folder"
-          cp -a ./dist/. /opt/portfolio/dist/
+          cp -a ./dist/. /home/shenkz/portfolio/dist/
 
           echo "3. Copying docker files"
-          cp ./docker-compose.yml /opt/portfolio/
-          cp ./nginx.conf /opt/portfolio/
+          cp ./docker-compose.yml /home/shenkz/portfolio/
+          cp ./nginx.conf /home/shenkz/portfolio/
 
           echo "4. Validating Compose"
-          cd /opt/portfolio
+          cd /home/shenkz/portfolio
           docker compose config # this will validate service name first
 
           echo "5. Rebuilding and restarting containers"
